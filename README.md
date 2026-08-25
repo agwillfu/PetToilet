@@ -13,11 +13,13 @@
 
 | 項目 | 狀態 |
 |---|---|
-| 韌體（ESP8266 + Adafruit IO） | ✅ 運作中，v0.2.0 |
-| WiFi 無線更新 | ✅ 已驗證 |
+| 韌體（ESP8266 + Adafruit IO） | ✅ 裝置上執行 v0.3.0；v0.3.1 已編譯待部署 |
+| WiFi 無線更新 | ✅ 已驗證（需與裝置同一區網） |
 | 定時清洗排程 | ✅ 已驗證（秒級準確） |
 | iOS App | ✅ Demo 模式與實機連線都可用 |
-| App Store 上架 | ⬜ 未開始 |
+| 隱私權政策 | ✅ [已上線](https://agwillfu.github.io/PetToilet/privacy.html) |
+| App Store 上架素材 | ✅ 截圖、隱私宣告、文案已備妥（見 `04_AppStore/`） |
+| App Store 送審 | ⬜ 待錄製示範影片並填寫 App Store Connect |
 
 ---
 
