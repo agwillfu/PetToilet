@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>白白的廁所 — 隱私權政策 / Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+    line-height: 1.75; max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 4rem;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2.25rem; border-bottom: 1px solid #8884; padding-bottom: .3rem; }
+  .meta { opacity: .7; font-size: .9rem; margin-top: 0; }
+  .en { opacity: .78; font-size: .95rem; }
+  code { background: #8882; padding: .1em .35em; border-radius: .25em; font-size: .9em; }
+  ul { padding-left: 1.3rem; }
+</style>
+</head>
+<body>
+
+<h1>白白的廁所 — 隱私權政策</h1>
+<p class="meta">Privacy Policy · 生效日期 Effective date: 2026-08-25</p>
+
+<h2>1. 概述 / Overview</h2>
+<p>
+「白白的廁所」是一款自製寵物尿盆裝置的伴侶 App。本文說明本 App 如何處理你的資料。
+</p>
+<p class="en">
+“白白的廁所” (PetToilet) is a companion app for a self-built pet toilet device.
+This document explains how the app handles your data.
+</p>
+
+<h2>2. 我們不收集任何資料 / We collect nothing</h2>
+<p>
+本 App <strong>不收集、不傳送、不儲存</strong>任何個人資料到開發者的伺服器 ——
+因為開發者<strong>沒有任何伺服器</strong>。具體來說：
+</p>
+<ul>
+  <li>沒有帳號系統，不需要註冊</li>
+  <li>沒有分析工具、沒有廣告、沒有追蹤</li>
+  <li>沒有任何第三方 SDK</li>
+  <li>沒有 App 內購買</li>
+</ul>
+<p class="en">
+This app collects no personal data. There is no account system, no analytics,
+no advertising, no tracking, no third-party SDKs, and no in-app purchases.
+The developer operates no server and receives no data from users.
+</p>
+
+<h2>3. 你輸入的資料存在哪裡 / Where your input is stored</h2>
+<p>
+為了連上你自己的裝置，App 需要你輸入 <strong>你自己的</strong> Adafruit IO 帳號資訊：
+</p>
+<ul>
+  <li><strong>使用者名稱</strong>：儲存於裝置本機的 <code>UserDefaults</code>。它會出現在每一個 MQTT 主題路徑中，本身不是機密資訊。</li>
+  <li><strong>AIO Key</strong>：儲存於裝置的 <strong>Keychain</strong>，使用
+      <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> 保護等級 ——
+      僅本裝置可讀，<strong>不會同步到 iCloud</strong>。</li>
+</ul>
+<p>
+這兩項資料<strong>不會離開你的裝置</strong>，唯一的例外是送往 Adafruit IO 進行帳號認證（見下節）。
+</p>
+<p class="en">
+Your Adafruit IO username is stored in local <code>UserDefaults</code>; your AIO Key is stored in the
+device Keychain with <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> and is not synced
+to iCloud. Neither leaves your device except to authenticate with Adafruit IO.
+</p>
+
+<h2>4. 資料傳送到哪裡 / Where data is sent</h2>
+<p>
+App 只會連線到 <strong>Adafruit IO</strong>，用於存取<strong>你自己帳號底下</strong>的資料：
+</p>
+<ul>
+  <li><code>wss://io.adafruit.com/mqtt</code>（TLS 加密）— 即時狀態與控制指令</li>
+  <li><code>https://io.adafruit.com/api/v2/…</code> — 讀取你自己的歷史紀錄</li>
+</ul>
+<p>
+Adafruit IO 是你自行註冊、自行持有的第三方服務，其資料處理方式適用
+<a href="https://www.adafruit.com/privacy" rel="noopener">Adafruit 的隱私權政策</a>。
+本 App 的開發者與 Adafruit 沒有任何合作或資料交換關係。
+</p>
+
+<h2>5. 與第三方分享 / Third-party sharing</h2>
+<p>
+<strong>無。</strong>本 App 不與任何第三方分享使用者資料，也沒有任何分析工具、廣告聯播網、
+第三方 SDK、母公司、子公司或關係企業能取得你的資料。
+</p>
+<p class="en">
+None. No user data is shared with any third party, analytics provider, advertising network,
+third-party SDK, or any parent, subsidiary, or related entity.
+</p>
+
+<h2>6. 資料保留與刪除 / Retention and deletion</h2>
+<ul>
+  <li><strong>活動紀錄</strong>：僅儲存於裝置本機，自動保留最近 <strong>14 天</strong>，逾期自動刪除。
+      App 內的「清除紀錄」按鈕可隨時清空顯示。</li>
+  <li><strong>憑證</strong>：可在 App 的連線設定中隨時清除。</li>
+  <li><strong>完全刪除</strong>：刪除本 App 即會移除裝置上所有相關資料，無需向開發者提出請求 ——
+      因為開發者手上本來就沒有你的任何資料。</li>
+  <li>存放在 Adafruit IO 上的資料由你自己的帳號掌控，可隨時在
+      <a href="https://io.adafruit.com" rel="noopener">io.adafruit.com</a> 自行刪除。</li>
+</ul>
+
+<h2>7. 兒童 / Children</h2>
+<p>
+本 App 並非針對 13 歲以下兒童設計，且不收集任何年齡層使用者的資料。
+</p>
+<p class="en">
+This app is not directed at children under 13 and collects no data from users of any age.
+</p>
+
+<h2>8. 政策變更 / Changes</h2>
+<p>
+本政策如有修改，會更新本頁面上方的生效日期。重大變更將於 App 更新說明中一併告知。
+</p>
+
+<h2>9. 聯絡方式 / Contact</h2>
+<p>
+如對本政策有任何疑問，請來信：<br>
+<a href="mailto:will.wy.fu@gmail.com">will.wy.fu@gmail.com</a>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+# ── 憑證與密碼：絕對不要提交 ──────────────────────────
+secrets.h
+*.key
+private.key
+*.mobileprovision
+*.p12
+
+# ── 編譯產物 ──────────────────────────────────────
+build/
+*.bin
+*.elf
+*.map
+
+# ── Xcode ────────────────────────────────────────
+# 使用者專屬的視窗位置、展開狀態、中斷點等，不屬於專案內容
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+DerivedData/
+.swiftpm/
+
+# ── 舊版 Blynk 函式庫 ──────────────────────────────
+# 韌體改用 Adafruit IO + arduino-mqtt 之後就不需要了。
+# 保留在本機不影響，但沒必要把 1.8MB 的第三方程式碼推上 repo。
+01_Arduino/libraries/
+
+# ── macOS ────────────────────────────────────────
+.DS_Store

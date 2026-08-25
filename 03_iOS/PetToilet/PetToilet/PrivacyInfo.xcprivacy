@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+        隱私宣告（Privacy Manifest）
+
+        自 2024-05-01 起，使用 required reason API 卻沒有宣告的 App，會在上傳
+        App Store Connect 時就被 ITMS-91053 擋下，連送審都進不去。
+
+        這個 App 的實際狀況：
+          UserDefaults          → 是 required reason API，必須宣告（見下方 CA92.1）
+          Keychain (SecItem*)   → 不在 required reason 清單上，不需宣告
+          URLSession / WebSocket → 不需宣告
+
+        Required reason API 只有五類：ActiveKeyboards、DiskSpace、FileTimestamp、
+        SystemBootTime、UserDefaults。
+    -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+
+    <!--
+        空陣列 = 明確聲明不收集任何資料。
+
+        使用者輸入的 Adafruit IO 憑證不算「收集」—— Apple 對 collect 的定義是
+        「傳出裝置且讓你或你的合作夥伴能夠存取」。這個 App 的開發者沒有任何
+        伺服器，拿不到那把 key；它只存在使用者自己的 Keychain，只送往使用者
+        自己的 Adafruit IO 帳號。
+    -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <!--
+                    CA92.1 — 只讀寫本 App 自己的資料，不跨 App 存取。
+                    用途：Adafruit IO 使用者名稱、活動紀錄的清除時間戳。
+                    （不是 1C8F.1，那是給有 App Group 的情況用的。）
+                -->
+                <string>CA92.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
