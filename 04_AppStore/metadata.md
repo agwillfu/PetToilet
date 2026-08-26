@@ -151,6 +151,21 @@ App Store 產品頁上。勾 not a trader 的唯一代價是歐盟使用者會�
 > 審核指南 2.2 規定「Demos, betas, and trial versions don't belong on the App Store」，
 > 用錯詞可能讓審查員誤以為整個 App 是試用版。
 
+### ⚠️ 為什麼第一次送審不附示範影片
+
+審核指南 2.1 **從未要求**示範影片；影片的要求只出現在退件訊息裡，是作業慣例而非公開規定。
+而 Apple 的原話是：
+
+> "in the event that your app **may only be reviewed by means of a demo video**,
+> you will be required to provide an updated demo video with **every resubmission**."
+
+關鍵在 **"may only be reviewed by"** —— 這個分類是給「非影片不可審」的 App。
+本 App 有內建模擬模式，審查員不需要硬體就能操作全部功能，**不屬於那一類**。
+
+主動附影片可能讓審查員把它歸進去，換來**每次更新都要重錄**的永久義務。
+所以策略是：**先不附，若 Resolution Center 要求再補**。上面的 Notes 已經寫了
+「需要的話我馬上提供」，態度是配合的，不會顯得在規避。
+
 ```
 WHAT THIS APP DOES
 This is a companion app for a self-built pet toilet device based on an
@@ -176,9 +191,13 @@ exercised without any hardware, account, or network connection:
 The first simulated event occurs about 12 seconds after launch, then
 repeats every 45-110 seconds. Simply open the app and wait.
 
-If you would also like to see the app driving the real hardware, a video
-recorded on a physical iPhone is available here:
-https://agwillfu.github.io/PetToilet/demo.mp4
+The simulation is not a trial or a limited version of the app - it is a
+built-in offline mode that runs the same state machine as the physical
+device, so the full feature set is available for review at all times.
+
+If anything is unclear or you would like a video of the app driving the
+real hardware, please let me know in the Resolution Center and I will
+provide one promptly.
 
 PRIVACY
 No accounts, no analytics, no advertising, no third-party SDKs, no
