@@ -19,7 +19,7 @@
 | iOS App | ✅ Demo 模式與實機連線都可用 |
 | 隱私權政策 | ✅ [已上線](https://agwillfu.github.io/PetToilet/privacy.html) |
 | App Store 上架素材 | ✅ 截圖、隱私宣告、文案已備妥（見 `04_AppStore/`） |
-| App Store 送審 | ⬜ 待錄製示範影片並填寫 App Store Connect |
+| App Store 送審 | ✅ v1.0.0 已提交，等待審查中 |
 
 ---
 
