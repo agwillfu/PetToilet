@@ -27,110 +27,94 @@
 
 ## 回覆全文（直接複製貼上，已填入實際機型）
 
+⚠️ **回覆欄位上限 4000 字元。** 下面這版是 **3919 字元**，剛好放得進去。
+初版寫了 4743 字被擋下，七項內容都在，只是敘述壓縮過。
+
 ```
 Thank you for the review. Please find the requested information below.
 
 1. SCREEN RECORDING
-Two recordings captured on a physical iPhone 14 Pro running iOS 26.6.1:
+Recorded on a physical iPhone 14 Pro running iOS 26.6.1:
 
-App walkthrough (screen recording, 41s):
+App walkthrough (41s):
 https://agwillfu.github.io/PetToilet/demo-app.mp4
-
 The same app driving the actual hardware (22s):
 https://agwillfu.github.io/PetToilet/demo-hardware.mp4
 
 The first recording begins with launching the app from the Home Screen and
-shows the typical user flow through the core features: live device status,
-manual flush, the three behaviour threshold sliders, scheduled cleaning
-setup, the activity log, and device diagnostics. The second recording shows
-the physical pet toilet responding to a flush command sent from the app.
+shows the typical user flow: live device status, manual flush, the three
+behaviour threshold sliders, scheduled cleaning, the activity log, and
+device diagnostics. The second shows the physical pet toilet responding to
+a flush command sent from the app.
 
-The app has no account registration, login, or deletion flows; no paid
-content, purchases, or subscriptions; no user-generated content; and it
-requests no sensitive data or device permissions of any kind. There are
-therefore no such flows to include in the recordings.
+The app has no account registration, login, or deletion flows; no purchases
+or subscriptions; no user-generated content; and it requests no sensitive
+data or device permissions. There are no such flows to record.
 
-2. DEVICES AND OPERATING SYSTEMS TESTED
-- iPhone 14 Pro running iOS 26.6.1 (physical device)
-- iPhone 17 Pro and iPhone 17 Pro Max simulators, iOS 26.5
+2. DEVICES AND OS TESTED
+- iPhone 14 Pro, iOS 26.6.1 (physical device)
+- iPhone 17 Pro / 17 Pro Max simulators, iOS 26.5
 
-3. APP FUNCTION AND TARGET AUDIENCE
-"白白的廁所" (PetToilet) is a companion app for a self-built pet toilet
-device based on an ESP8266 microcontroller.
+3. FUNCTION AND TARGET AUDIENCE
+PetToilet is a companion app for a self-built pet toilet device based on an
+ESP8266 microcontroller.
 
-Problem it solves: a dog owner cannot flush the pet toilet while away from
-home, and has no record of when or how often the dog used it. Flushing
-while the dog is still on the pad also startles the animal.
+Problem solved: a dog owner cannot flush the pet toilet while away from
+home and has no record of when the dog used it. Flushing while the dog is
+still on the pad also startles the animal.
 
-How it works: a vibration sensor in the pet toilet detects when the dog
-steps on and off the pad. The device waits until the dog has completely
-left, then runs a water pump to flush. The app lets the owner see the live
-status, flush manually, tune the detection thresholds, configure scheduled
-cleaning cycles, and review the last two weeks of activity.
+A vibration sensor detects when the dog steps on and off the pad. The
+device waits until the dog has fully left, then runs a water pump. The app
+shows live status, flushes manually, tunes detection thresholds, configures
+scheduled cleaning, and shows two weeks of activity.
 
-Target audience: owners of this self-built device — primarily the developer
-and family members. The firmware, wiring diagram, and build instructions are
-published as open source so that other makers can build the same device:
+Audience: owners of this self-built device. Firmware, wiring diagram and
+build instructions are open source:
 https://github.com/agwillfu/PetToilet
 
-4. SETUP AND ACCESS INSTRUCTIONS
-No login credentials, account, or sample files are required.
+4. SETUP AND ACCESS
+No credentials, account or sample files are required.
 
-The app opens directly into a built-in simulation mode whenever no device
-credentials are configured, which is what happens on a fresh install. This
-mode runs the same state machine as the physical device entirely on-device
+On a fresh install the app opens directly into a built-in simulation mode.
+It runs the same state machine as the physical device entirely on-device
 and generates simulated pet-visit events on a timer, so every feature is
-fully exercisable without any hardware, account, or network connection:
+exercisable without hardware, account or network: live status (idle /
+in-use / flushing / cooldown), manual flush, all three threshold sliders,
+scheduled cleaning, activity log, and diagnostics.
 
-  - Live status display cycling through idle / in-use / flushing / cooldown
-  - Manual flush button
-  - All three behaviour threshold sliders
-  - Scheduled cleaning (add, edit, delete time entries)
-  - Activity log
-  - Device diagnostics
+The first simulated event occurs about 12 seconds after launch, then
+repeats every 45-110 seconds. Just open the app and wait.
 
-The first simulated event occurs about 12 seconds after launch, then repeats
-every 45-110 seconds. No action is needed - simply open the app and wait.
+This is not a trial or feature-limited build. It is an offline mode; the
+full feature set is available for review at all times.
 
-This is not a trial or a feature-limited version of the app. It is a
-built-in offline mode, and the full feature set is available for review at
-all times.
+To connect real hardware (not needed for review), the user enters their own
+Adafruit IO credentials via the gear icon.
 
-To connect to real hardware (optional, not needed for review), a user enters
-their own Adafruit IO username and API key via the gear icon in the top left.
-
-5. EXTERNAL SERVICES USED
-Adafruit IO (https://io.adafruit.com) is the only external service. It is a
-general-purpose IoT data platform operated by Adafruit Industries, used here
-as an MQTT message broker so the phone and the microcontroller can exchange
-messages while both are behind consumer NAT:
-
-  - wss://io.adafruit.com/mqtt  - MQTT over WebSocket (TLS) for live status
-                                  and control commands
-  - https://io.adafruit.com/api/v2/...  - REST API to read the user's own
-                                          historical device data
+5. EXTERNAL SERVICES
+Adafruit IO (https://io.adafruit.com) is the only external service, used as
+an MQTT broker so the phone and the microcontroller can exchange messages
+while both are behind consumer NAT:
+- wss://io.adafruit.com/mqtt (TLS) for live status and commands
+- https://io.adafruit.com/api/v2/... to read the user's own history
 
 Each user connects with their own Adafruit IO account. The developer
-operates no server of any kind and has no access to any user's data or
-credentials.
+operates no server and has no access to any user's data or credentials.
 
 There are no analytics providers, advertising networks, payment processors,
-AI services, authentication services, or any third-party SDKs. The MQTT
-client is implemented directly in the app; the app has zero third-party
-dependencies.
+AI services, authentication services, or third-party SDKs. The MQTT client
+is implemented in the app itself; there are zero third-party dependencies.
 
 6. REGIONAL DIFFERENCES
-None. The app functions identically in all regions. There is no
-region-specific content, pricing, or feature gating. The interface is
-localized in Traditional Chinese only; all times are displayed in the
-device's own time zone using a 24-hour clock.
+None. The app functions identically in all regions, with no region-specific
+content, pricing or feature gating. The interface is Traditional Chinese
+only; times use the device's own time zone and a 24-hour clock.
 
 7. REGULATED INDUSTRY / THIRD-PARTY MATERIAL
-The app does not operate in a regulated industry. It contains no protected
-third-party material: the app icon and all interface graphics are original
-work, interface symbols are Apple's SF Symbols, and all displayed data is
-either generated by the simulation mode or produced by the user's own
-device.
+Not a regulated industry. No protected third-party material: the app icon
+and interface graphics are original work, interface symbols are Apple's SF
+Symbols, and all displayed data is generated either by the simulation mode
+or by the user's own device.
 
 Please let me know if any further information would be helpful.
 ```
