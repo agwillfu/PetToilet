@@ -26,3 +26,8 @@ DerivedData/
 
 # ── macOS ────────────────────────────────────────
 .DS_Store
+
+# ── 原始錄影檔 ──────────────────────────────────
+# HEVC 編碼、共 59MB。轉成 H.264 的版本在 docs/ 底下才是要發布的。
+PetToilet_APP.MP4
+PetToilet_RealRecord.MOV

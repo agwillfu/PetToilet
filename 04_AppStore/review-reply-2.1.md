@@ -1,82 +1,57 @@
 # 回覆 Guideline 2.1 — Information Needed（2026-08-29 退件）
 
-Apple 要的七項資料，逐項備妥。**只需在 Resolution Center 回覆，不用重新上傳 build。**
+**不用重新編譯、不用新 build、build number 不用 +1。**
+在退件頁面按「回覆 App 審查」貼上下面整段即可，Apple 會用同一份 build 繼續審。
 
 ---
 
-## ⚠️ 只有第 1 項需要你動手：螢幕錄影
+## 影片
 
-Apple 的原文要求：
+兩支影片已轉成 H.264 放在 `docs/`，推上 GitHub 後的直連：
 
-> A screen recording captured on **a physical device**, running the latest operating system,
-> demonstrating the app's functionality. The recording **must begin with launching the app**
-> and show the typical user flow through its core features.
+| 檔案 | 內容 | 網址 |
+|---|---|---|
+| `docs/demo-app.mp4` | iPhone 螢幕錄影，41 秒 | `https://agwillfu.github.io/PetToilet/demo-app.mp4` |
+| `docs/demo-hardware.mp4` | 實體裝置運作，22 秒 | `https://agwillfu.github.io/PetToilet/demo-hardware.mp4` |
 
-他們列的四種必拍情境（帳號註冊/登入/刪除、付費內容、使用者生成內容、權限請求提示）
-**你的 App 一項都沒有**，所以不用額外處理。
-
-### 建議腳本（1.5～2 分鐘，一鏡到底不剪接）
-
-| 秒數 | 畫面 |
-|---|---|
-| 0:00 | **從主畫面點開 App**（一定要拍到啟動這一刻，這是明文要求） |
-| 0:05 | 狀態卡片顯示「等待中」與連線狀態 |
-| 0:15 | 按「立即沖水」→ **鏡頭帶到實體尿盆，拍到水泵真的在運轉** |
-| 0:35 | 回到 App，狀態變成「沖水中」→「靜置中」→「等待中」，上次沖水時間更新 |
-| 0:50 | 往下捲，拖動三個參數滑桿 |
-| 1:05 | 定時清洗：開關、時間長度、新增/修改一個時間點 |
-| 1:20 | 活動紀錄：顯示歷史事件與觸發來源 |
-| 1:30 | 右上角扳手 → 裝置診斷；左上角齒輪 → 設定畫面與隱私權政策連結 |
-
-**錄製方式**：iPhone 內建螢幕錄影（設定 → 控制中心 → 加入「螢幕錄製」）。
-拍實體硬體的段落可以用另一支手機或請人幫忙拍，或把 iPhone 架著、手動操作尿盆。
-
-**⚠️ 一定要用實體 iPhone，不能用模擬器。** Apple 對此有明確立場。
-
-### 上傳影片
-
-放到 `docs/demo.mp4` 推上 GitHub，取得直連：
-
-```
-https://agwillfu.github.io/PetToilet/demo.mp4
-```
-
-Apple 明確偏好**直接的檔案連結**，不要用 YouTube / Google Drive / Dropbox 的分享連結（廣泛回報會失敗）。
-
-⚠️ GitHub 單檔上限 100MB。錄完先看大小，太大的話用這行壓縮：
-
-```bash
-ffmpeg -i demo.mov -vf "scale=-2:1280" -c:v libx264 -crf 28 -preset slow -an docs/demo.mp4
-```
-
-（`-an` 去掉音訊，審查不需要聲音。）
+> **為什麼要轉檔**：原始錄影是 HEVC（H.265）。Safari 播得動，但**桌機版 Chrome 與
+> Firefox 通常播不了 HEVC** —— 審查員用什麼瀏覽器無法控制，影片打不開等於沒交。
+> H.264 是到處都能播的格式。
+>
+> 轉檔指令（macOS 內建，不需 ffmpeg）：
+> ```bash
+> avconvert --source 原始檔.MOV --preset Preset1280x720 --output docs/輸出.mp4 --replace
+> ```
 
 ---
 
-## 第 2～7 項：直接複製下面整段貼進 Resolution Center
-
-> ⚠️ 貼之前把 `[要填]` 換成你實際測試的機型與 iOS 版本。
+## 回覆全文（直接複製貼上，已填入實際機型）
 
 ```
 Thank you for the review. Please find the requested information below.
 
 1. SCREEN RECORDING
-A screen recording captured on a physical iPhone running the latest iOS is
-available here:
-https://agwillfu.github.io/PetToilet/demo.mp4
+Two recordings captured on a physical iPhone 14 Pro running iOS 26.6.1:
 
-The recording begins with launching the app from the Home Screen and shows
-the complete user flow: live device status, manual flush (including the
-physical hardware responding), the three behaviour threshold sliders,
-scheduled cleaning setup, the activity log, and device diagnostics.
+App walkthrough (screen recording, 41s):
+https://agwillfu.github.io/PetToilet/demo-app.mp4
+
+The same app driving the actual hardware (22s):
+https://agwillfu.github.io/PetToilet/demo-hardware.mp4
+
+The first recording begins with launching the app from the Home Screen and
+shows the typical user flow through the core features: live device status,
+manual flush, the three behaviour threshold sliders, scheduled cleaning
+setup, the activity log, and device diagnostics. The second recording shows
+the physical pet toilet responding to a flush command sent from the app.
 
 The app has no account registration, login, or deletion flows; no paid
 content, purchases, or subscriptions; no user-generated content; and it
 requests no sensitive data or device permissions of any kind. There are
-therefore no such flows to include in the recording.
+therefore no such flows to include in the recordings.
 
 2. DEVICES AND OPERATING SYSTEMS TESTED
-- [要填，例如 iPhone 15 Pro] running iOS [要填，例如 26.5] — physical device
+- iPhone 14 Pro running iOS 26.6.1 (physical device)
 - iPhone 17 Pro and iPhone 17 Pro Max simulators, iOS 26.5
 
 3. APP FUNCTION AND TARGET AUDIENCE
@@ -164,16 +139,20 @@ Please let me know if any further information would be helpful.
 
 ## 送出流程
 
-1. 在退件頁面按 **「回覆 App 審查」**
-2. 貼上整段
-3. 送出後，Apple 會用**同一份 build** 繼續審查 —— 不需要重新上傳，build number 也不用 +1
+1. **先 `git push`**，並確認兩個影片網址真的打得開（Pages 部署要一兩分鐘）
+2. 在退件頁面按 **「回覆 App 審查」**
+3. 貼上整段送出
 
-## 之後記得做的事
+⚠️ **一定要先確認影片連結可以播再送出。** 連結掛掉是這類回覆最常見的二次退件原因。
 
-Apple 特別交代：
+---
+
+## 下一版記得
+
+Apple 明確交代：
 
 > Include this information in the Notes field of the App Review Information
 > section in App Store Connect **for future submissions**.
 
-所以下一版送審前，要把第 3～7 項濃縮後放進 **App 審查資訊的「備註」欄位**（上限 4000 bytes）。
-這樣就不會再因為同樣理由被退。
+第 3～7 項合計約 3800 bytes，**放得進 4000 bytes 的備註欄**。下次送審前先塞進去，
+就不會再因同樣理由被退。
